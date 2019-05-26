@@ -32,6 +32,7 @@ class TicketController extends Controller
         Ticket::create([
             'user_id' => $validated['user_id'],
             'organization_id' => $validated['organization_id'],
+            'advancedticket_id' => $validated['advancedticket_id'],
             'place_id' => $validated['place_id'],
             'status_id' => $validated['status_id'],
             'isEat' => $validated['isEat'],

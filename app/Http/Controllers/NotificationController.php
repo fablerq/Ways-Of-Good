@@ -58,6 +58,9 @@ class NotificationController extends Controller
             'isHeat' => $validated['isHeat'],
             'isDry' => $validated['isDry'],
             'isWork' => $validated['isWork'],
+            'created_at' => $validated['created_at'],
+            'aboutTime' => $validated['aboutTime'],
+            'endOfTicket' => $validated['endOfTicket']
         ]);
 
         $tickets = Ticket::where([

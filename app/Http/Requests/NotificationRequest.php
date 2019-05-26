@@ -32,6 +32,9 @@ class NotificationRequest extends FormRequest
             'isHeat'       => 'required',
             'isDry' => 'required',
             'isWork'       => 'required',
+            'created_at'       => 'created_at',
+            'aboutTime' => 'aboutTime',
+            'endOfTicket'       => 'endOfTicket'
         ];
     }
 

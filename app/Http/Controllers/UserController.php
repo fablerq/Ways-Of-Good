@@ -35,6 +35,8 @@ class UserController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => $validated['password'],
+            'image' => $validated['image'],
+            'points' => $validated['points']
         ]);
 
         return response()->json([
@@ -94,18 +96,4 @@ class UserController extends Controller
         }
     }
 
-    public function addOrganization($userId, $organizationId)
-    {
-        if (User::where('id', $userId)->first() && Organization::where('id', $organizationId)->first()) {
-            DB::insert('insert into organization_user (organization_id, user_id) values (?, ?)', [$organizationId, $userId]);
-            return response()->json([
-                'message' => 'Success.',
-            ]);
-        }
-        else {
-            return response()->json([
-                'message' => 'Error.',
-            ]);
-        }
-    }
 }

@@ -17,6 +17,11 @@ class Place extends Model
         return $this->belongsTo('App\Models\Icon');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function ticket()
     {
         return $this->hasMany('App\Models\Ticket');

@@ -7,18 +7,15 @@ use App\User;
 
 class Organization extends Model
 {
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
     
     public function ticket()
     {
         return $this->hasMany('App\Models\Ticket');
     }
+    
 
     protected $fillable = [
-        'title', 'about'
+        'title', 'about', 'image', 'email', 'password', 'points'
     ];
 
     public $timestamps = false;
