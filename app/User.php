@@ -2,15 +2,20 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Organization;
 use App\Models\Place;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -35,8 +40,9 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name', 'email', 'password', 'vk_id', 'first_name',
+    
         'avatar_url', 'last_name', 'image', 'points'
-    ];
+     ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -44,10 +50,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token', 'password',
     ];
 
-    /**
+     /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -55,4 +61,35 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Create confirmation key for user
+     */
+    public function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user){
+            $user -> token = random_int(30,40);
+        });
+    }
+
+    /**
+     * Hash user password
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this -> attributes['password'] = bcrypt($password);
+    }
+
+    /**
+     * Remove key from base
+     */
+    public function confirmEmail()
+    {
+        $this -> verified = true;
+        $this -> token = null;
+
+        $this -> save();
+    }
 }
