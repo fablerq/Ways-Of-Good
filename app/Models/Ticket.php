@@ -32,14 +32,11 @@ class Ticket extends Model
         return $this->belongsTo('App\Models\Status');
     }
 
-    public function type()
-    {
-        return $this->belongsTo('App\Models\Type');
-    }
 
     protected $fillable = [
-        'user_id', 'organization_id', 'place_id', 'icon_id',
-        'status_id', 'type_id','title', 'description', 'availableVisitors', 'time'
+        'user_id', 'organization_id', 'place_id', 
+        'status_id', 'isEat', 'isSleep', 'isMed', 'isHeat', 
+        'isDry', 'isWork', 'title', 'description', 'availableVisitors', 'time'
     ];
 
     public $timestamps = false;

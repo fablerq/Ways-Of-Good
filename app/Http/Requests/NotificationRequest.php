@@ -24,12 +24,14 @@ class NotificationRequest extends FormRequest
     public function rules()
     {
         return [
-            'place_id'    => 'required|exists:places,id',
             'name' => 'required',
-            'age'       => 'required',
-            'code' => 'required',
-            'isCame'       => 'required',
-            'adress'       => 'required',
+            'sex'       => 'required',
+            'isEat' => 'required',
+            'isSleep'       => 'required',
+            'isMed' => 'required',
+            'isHeat'       => 'required',
+            'isDry' => 'required',
+            'isWork'       => 'required',
         ];
     }
 

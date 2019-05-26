@@ -15,12 +15,20 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('place_id')->unsigned();
-            $table->string('name');
-            $table->integer('age');
-            $table->string('code');
-            $table->boolean('isCame');
-            $table->string('adress');
+            $table->integer('place_id')->unsigned()->nullable();
+            $table->string('data')->default('10:00');
+            $table->string('name')->default('Аноним');
+            $table->string('sex')->default('undefined');
+            $table->string('code')->default('Пусто');
+            $table->string('secretKey')->default('emptysecretkey');
+            $table->boolean('isCame')->default(false);
+            $table->string('adress')->default('undefiend');
+            $table->boolean('isEat')->default(false);
+            $table->boolean('isSleep')->default(false);
+            $table->boolean('isMed')->default(false);
+            $table->boolean('isHeat')->default(false);
+            $table->boolean('isDry')->default(false);
+            $table->boolean('isWork')->default(false);
         });
     }
 

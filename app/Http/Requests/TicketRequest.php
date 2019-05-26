@@ -25,10 +25,15 @@ class TicketRequest extends FormRequest
     {
         return [
             'user_id'    => 'required|exists:users,id',
-            'organization_id' => 'required|exists:organizations,id',
+            'organization_id' => '',
             'place_id'       => 'required|exists:places,id',
             'status_id'       => 'required|exists:statuses,id',
-            'type_id'       => 'required|exists:types,id',
+            'isEat' => 'required',
+            'isSleep'       => 'required',
+            'isMed' => 'required',
+            'isHeat'       => 'required',
+            'isDry' => 'required',
+            'isWork'       => 'required',
             'title' => 'required|min:2|max:32',
             'description'       => 'required|min:2|max:256',
             'availableVisitors'       => 'required',

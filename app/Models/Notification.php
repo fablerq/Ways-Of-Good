@@ -12,7 +12,9 @@ class Notification extends Model
     }
 
     protected $fillable = [
-        'place_id', 'name', 'age', 'code', 'isCame', 'adress'
+        'place_id', 'data', 'name', 'sex', 'code', 'secretCode', 
+        'isCame', 'adress', 'isEat', 'isSleep', 'isMed', 'isHeat',
+        'isDry', 'isWork'
     ];
 
     public $timestamps = false;
