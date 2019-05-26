@@ -34,8 +34,8 @@ class TicketRequest extends FormRequest
             'isHeat'       => 'required',
             'isDry' => 'required',
             'isWork'       => 'required',
-            'title' => 'required|min:2|max:32',
-            'description'       => 'required|min:2|max:256',
+            'title' => 'required|min:2',
+            'description'       => 'required|min:2',
             'availableVisitors'       => 'required',
             'time'       => 'required',
 
