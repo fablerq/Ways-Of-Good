@@ -3,9 +3,13 @@
 /public/storage
 /storage/*.key
 /vendor
+<<<<<<< HEAD
 
 /.idea
 
+=======
+/.idea
+>>>>>>> dd6121beebf9d362c6e63b771062412c7577c49a
 .env
 .phpunit.result.cache
 Homestead.json
