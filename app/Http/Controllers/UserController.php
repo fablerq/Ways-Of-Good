@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests\UserRequest;
 use App\User;
 use App\Models\Ticket;
@@ -9,8 +8,23 @@ use App\Models\Place;
 use App\Models\Organization;
 use Illuminate\Support\Facades\DB;
 
+
 class UserController extends Controller
 {
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getUserID(){
+        return response()->json(Auth::id());
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getUserInfo()
+    {
+        return response()->json(Auth::user());
+    }
     /**
      * Display a listing of the resource.
      *
@@ -96,4 +110,18 @@ class UserController extends Controller
         }
     }
 
+    public function addOrganization($userId, $organizationId)
+    {
+        if (User::where('id', $userId)->first() && Organization::where('id', $organizationId)->first()) {
+            DB::insert('insert into organization_user (organization_id, user_id) values (?, ?)', [$organizationId, $userId]);
+            return response()->json([
+                'message' => 'Success.',
+            ]);
+        }
+        else {
+            return response()->json([
+                'message' => 'Error.',
+            ]);
+    }
+        }
 }
