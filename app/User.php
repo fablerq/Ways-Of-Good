@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Organization;
+use App\Models\Place;
 
 class User extends Authenticatable
 {
@@ -27,14 +28,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Place::class);
     }
 
-    public function organizations()
+    public function place()
     {
-        return $this->belongsToMany(Organization::class);
+        return $this->hasMany('App\Models\Place');
     }
 
     protected $fillable = [
         'name', 'email', 'password', 'vk_id', 'first_name',
-        'avatar_url', 'last_name'
+        'avatar_url', 'last_name', 'image', 'points'
     ];
 
     /**

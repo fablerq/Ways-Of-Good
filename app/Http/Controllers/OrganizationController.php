@@ -31,6 +31,10 @@ class OrganizationController extends Controller
         Organization::create([
             'title' => $validated['title'],
             'about' => $validated['about'],
+            'image' => $validated['image'],
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+            'points' => $validated['points']
         ]);
 
         return response()->json([

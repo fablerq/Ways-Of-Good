@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrganizationUserTable extends Migration
+class CreateAdvancedTicketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateOrganizationUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('organization_user', function (Blueprint $table) {
+        Schema::create('advanced_tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('organization_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ class CreateOrganizationUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('organization_user');
+        Schema::dropIfExists('advanced_tickets');
     }
 }

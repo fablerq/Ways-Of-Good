@@ -22,6 +22,11 @@ class Ticket extends Model
         return $this->belongsTo('App\Models\Organization');
     }
 
+    public function advancedticket()
+    {
+        return $this->belongsTo('App\Models\AdvancedTicket');
+    }
+
     public function place()
     {
         return $this->belongsTo('App\Models\Place');
@@ -34,7 +39,7 @@ class Ticket extends Model
 
 
     protected $fillable = [
-        'user_id', 'organization_id', 'place_id', 
+        'user_id', 'organization_id', 'advancedticket_id', 'place_id', 
         'status_id', 'isEat', 'isSleep', 'isMed', 'isHeat', 
         'isDry', 'isWork', 'title', 'description', 'availableVisitors', 'time'
     ];

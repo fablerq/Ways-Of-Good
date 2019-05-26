@@ -17,6 +17,7 @@ class CreateTicketsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
             $table->integer('organization_id')->unsigned()->nullable();
+            $table->integer('advancedticket_id')->unsigned()->nullable();
             $table->integer('place_id')->unsigned();
             $table->integer('status_id')->unsigned();
             $table->boolean('isEat')->default(false);

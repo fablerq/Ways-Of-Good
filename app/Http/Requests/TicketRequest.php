@@ -25,7 +25,8 @@ class TicketRequest extends FormRequest
     {
         return [
             'user_id'    => 'required|exists:users,id',
-            'organization_id' => '',
+            'organization_id' => 'required|exists:organizations,id|nullable',
+            'advancedticket_id' => 'required|exists:advancedtickets,id|nullable',
             'place_id'       => 'required|exists:places,id',
             'status_id'       => 'required|exists:statuses,id',
             'isEat' => 'required',
