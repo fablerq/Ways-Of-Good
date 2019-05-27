@@ -40,12 +40,18 @@ class AdvancedTicketController extends Controller
             'isSunday' => $validated['isSunday'],
             'startTime' => $validated['startTime'],
             'endTime' => $validated['endTime'],
-
         ]);
 
         return response()->json([
             'message' => 'Успешно добавлено',
         ]);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $aticket = AdvancedTicket::where('id', $id)->update($request->all())->get();
+        return response()->json($aticket, 200, ['Content-Type' => 'application/json;charset=utf8'], JSON_UNESCAPED_UNICODE);
     }
 
     /**

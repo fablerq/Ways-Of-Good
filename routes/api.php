@@ -60,5 +60,3 @@ Route::resource('icons', 'IconController', [
   ]);  
 
   Route::post('tickets/{ticketId}/{tagId}', 'TicketController@addTag');
-  Route::post('users/{userId}/{placeId}', 'UserController@addPlace');
-  Route::post('users/test/{userId}/{organizationId}', 'UserController@addOrganization');

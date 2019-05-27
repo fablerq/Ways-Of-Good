@@ -7,11 +7,6 @@ use App\User;
 
 class Place extends Model
 {
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
-
     public function icon()
     {
         return $this->belongsTo('App\Models\Icon');
@@ -33,7 +28,7 @@ class Place extends Model
     }
 
     protected $fillable = [
-        'icon_id', 'title', 'description', 'geoData', "adress",
+        'icon_id', 'user_id', 'title', 'description', 'geoData', "adress",
     ];
 
     public $timestamps = false;

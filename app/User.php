@@ -43,16 +43,6 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\Models\Ticket');
     }
 
-    public function places()
-    {
-        return $this->belongsToMany(Place::class);
-    }
-
-    public function place()
-    {
-        return $this->hasMany('App\Models\Place');
-    }
-
     protected $fillable = [
         'name', 'email', 'password', 'vk_id', 'first_name',
     

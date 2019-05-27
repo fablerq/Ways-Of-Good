@@ -12,7 +12,8 @@ class Notification extends Model
     }
 
     protected $fillable = [
-        'place_id', 'data', 'name', 'sex', 'code', 'secretCode', 
+        'place_id', 'created_at', 'aboutTime',
+        'endOfTicket', 'name', 'sex', 'code', 'secretCode', 
         'isCame', 'adress', 'isEat', 'isSleep', 'isMed', 'isHeat',
         'isDry', 'isWork'
     ];

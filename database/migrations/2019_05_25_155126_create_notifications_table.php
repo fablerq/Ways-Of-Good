@@ -16,7 +16,7 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('place_id')->unsigned()->nullable();
-           $table->dateTime('created_at');
+            $table->dateTime('created_at');
             $table->dateTime('aboutTime');
             $table->dateTime('endOfTicket');
             $table->string('name')->default('Аноним');

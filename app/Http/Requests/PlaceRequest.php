@@ -25,6 +25,7 @@ class PlaceRequest extends FormRequest
     {
         return [
             'icon_id' => 'required|exists:icons,id',
+            'user_id' => 'required|exists:users,id',
             'title'    => 'required',
             'description' => 'required',
             'geoData' => 'required',

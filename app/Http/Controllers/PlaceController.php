@@ -30,6 +30,7 @@ class PlaceController extends Controller
     {
         $validated = $request->validated();
         Place::create([
+            'users_id' => $validated['user_id'],
             'icon_id' => $validated['icon_id'],
             'title' => $validated['title'],
             'description' => $validated['description'],
@@ -53,6 +54,13 @@ class PlaceController extends Controller
     {
         $place = Place::find($id);
 
+        return response()->json($place, 200, ['Content-Type' => 'application/json;charset=utf8'], JSON_UNESCAPED_UNICODE);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $place = Place::where('id', $id)->update($request->all())->get();
         return response()->json($place, 200, ['Content-Type' => 'application/json;charset=utf8'], JSON_UNESCAPED_UNICODE);
     }
 

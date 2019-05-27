@@ -93,35 +93,4 @@ class UserController extends Controller
             'message' => 'Юзер номер '.$id.' удалено успешно',
         ]);
     }
-
-    
-    public function addPlace($userId, $placeId)
-    {
-        if (User::where('id', $userId)->first() && Place::where('id', $placeId)->first()) {
-            DB::insert('insert into place_user (user_id, place_id) values (?, ?)', [$userId, $placeId]);
-            return response()->json([
-                'message' => 'Success.',
-            ]);
-        }
-        else {
-            return response()->json([
-                'message' => 'Error.',
-            ]);
-        }
-    }
-
-    public function addOrganization($userId, $organizationId)
-    {
-        if (User::where('id', $userId)->first() && Organization::where('id', $organizationId)->first()) {
-            DB::insert('insert into organization_user (organization_id, user_id) values (?, ?)', [$organizationId, $userId]);
-            return response()->json([
-                'message' => 'Success.',
-            ]);
-        }
-        else {
-            return response()->json([
-                'message' => 'Error.',
-            ]);
-    }
-        }
 }
