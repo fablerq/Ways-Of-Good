@@ -30,7 +30,7 @@ class PlaceController extends Controller
     {
         $validated = $request->validated();
         Place::create([
-            'users_id' => $validated['user_id'],
+            'user_id' => $validated['user_id'],
             'icon_id' => $validated['icon_id'],
             'title' => $validated['title'],
             'description' => $validated['description'],

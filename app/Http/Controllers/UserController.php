@@ -49,8 +49,7 @@ class UserController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => $validated['password'],
-            'image' => $validated['image'],
-            'points' => $validated['points']
+            'points' => 0
         ]);
 
         return response()->json([

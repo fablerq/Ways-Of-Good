@@ -11,9 +11,6 @@
 |
 */
 
-
-use Illuminate\Support\Facades\Route;
-
 # Vk authorization
 Route::group(['prefix' => 'auth'], function () {
     Route::get('vk', 'VkAuthController@redirectToProvider')
