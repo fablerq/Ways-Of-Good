@@ -41,7 +41,8 @@ class Ticket extends Model
     protected $fillable = [
         'user_id', 'organization_id', 'advancedticket_id', 'place_id', 
         'status_id', 'isEat', 'isSleep', 'isMed', 'isHeat', 
-        'isDry', 'isWork', 'title', 'description', 'availableVisitors', 'time'
+        'isDry', 'isWork', 'title', 'description', 'availableVisitors', 
+        'startTime', 'endTime'
     ];
 
     public $timestamps = false;

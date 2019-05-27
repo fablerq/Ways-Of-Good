@@ -21,6 +21,13 @@ class PlaceController extends Controller
         return response()->json($places, 200, ['Content-Type' => 'application/json;charset=utf8'], JSON_UNESCAPED_UNICODE);
     }
 
+    public function showForUser($id)
+    {
+        $places = Place::where('user_id', $id)->get();
+
+        return response()->json($places, 200, ['Content-Type' => 'application/json;charset=utf8'], JSON_UNESCAPED_UNICODE);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -81,7 +88,7 @@ class PlaceController extends Controller
         Place::destroy($id);
 
         return response()->json([
-            'message' => 'Место номер '.$id.' удалено успешно',
+            'message' => 'Место номер '.$id.' удален успешно',
         ]);
     }
 }

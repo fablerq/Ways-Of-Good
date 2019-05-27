@@ -25,11 +25,11 @@ class OrganizationRequest extends FormRequest
     {
         return [
             'title'    => 'required',
-            'about' => 'required',
-            'image' => 'required',
+            'about' => 'nullable',
+            'image' => 'nullable',
             'email' => 'required',
             'password' => 'required',
-            'points' => 'required'
+            'points' => 'nullable'
         ];
     }
 }

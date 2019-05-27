@@ -32,9 +32,7 @@ class AdvancedTicketRequest extends FormRequest
             'isThursday'       => 'required',
             'isFriday' => 'required',
             'isSaturday'       => 'required',
-            'isSunday'       => 'required',
-            'startTime' => 'required',
-            'endTime'       => 'required',
+            'isSunday'       => 'required'
         ];
     }
 }

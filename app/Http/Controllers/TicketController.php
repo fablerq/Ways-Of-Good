@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TicketRequest;
+use App\Models\AdvancedTicket;
 use App\Models\Ticket;
 use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
-use App\Models\AdvancedTicket;
 
 class TicketController extends Controller
 {
@@ -22,6 +22,21 @@ class TicketController extends Controller
         return response()->json($tickets, 200, ['Content-Type' => 'application/json;charset=utf8'], JSON_UNESCAPED_UNICODE);
     }
 
+
+    public function showForUser($id)
+    {
+        $tickets = Ticket::where('user_id', $id)->get();
+
+        return response()->json($tickets, 200, ['Content-Type' => 'application/json;charset=utf8'], JSON_UNESCAPED_UNICODE);
+    }
+
+    public function showForOrg($id)
+    {
+        $tickets = Ticket::where('organization_id', $id)->get();
+
+        return response()->json($tickets, 200, ['Content-Type' => 'application/json;charset=utf8'], JSON_UNESCAPED_UNICODE);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -30,7 +45,7 @@ class TicketController extends Controller
     public function store(TicketRequest $request)
     {
         $validated = $request->validated();
-        if (!$validated['organization_id'])
+        if (empty($validated['organization_id']))
         {
             Ticket::create([
                 'user_id' => $validated['user_id'],
@@ -45,7 +60,8 @@ class TicketController extends Controller
                 'title' => $validated['title'],
                 'description' => $validated['description'],
                 'availableVisitors' => $validated['availableVisitors'],
-                'time' => $validated['time'],
+                'startTime' => $validated['startTime'],
+                'endTime' => $validated['endTime']
             ]);
         }
         else {
@@ -59,12 +75,9 @@ class TicketController extends Controller
                 'isFriday' => $validated['isFriday'],
                 'isSaturday' => $validated['isSaturday'],
                 'isSunday' => $validated['isSunday'],
-                'startTime' => $validated['startTime'],
-                'endTime' => $validated['endTime'],
             ]);
             //Ticket::create($validated->all());
             Ticket::create([
-                'user_id' => $validated['user_id'],
                 'organization_id' => $validated['organization_id'],
                 'advancedticket_id' => $aticket->id,
                 'place_id' => $validated['place_id'],
@@ -78,7 +91,8 @@ class TicketController extends Controller
                 'title' => $validated['title'],
                 'description' => $validated['description'],
                 'availableVisitors' => $validated['availableVisitors'],
-                'time' => $validated['time'],
+                'startTime' => $validated['startTime'],
+                'endTime' => $validated['endTime']
             ]);
         }
 

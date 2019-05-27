@@ -15,7 +15,16 @@ class CreateAdvancedTicketsTable extends Migration
     {
         Schema::create('advanced_tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->string('startInterval');
+            $table->string('endInterval');
+            $table->boolean('isMonday')->default(false);
+            $table->boolean('isSleep')->default(false);
+            $table->boolean('isTuesday')->default(false);
+            $table->boolean('isWednesday')->default(false);
+            $table->boolean('isThursday')->default(false);
+            $table->boolean('isFriday')->default(false);
+            $table->boolean('isSaturday')->default(false);
+            $table->boolean('isSunday')->default(false);
         });
     }
 

@@ -24,9 +24,9 @@ class TicketRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id'    => 'required|exists:users,id',
-            'organization_id' => 'required|exists:organizations,id|nullable',
-            'advancedticket_id' => 'required|exists:advancedtickets,id|nullable',
+            'user_id'    => 'nullable|exists:users,id',
+            'organization_id' => 'nullable|exists:organizations,id',
+            'advancedticket_id' => 'nullable|exists:advancedtickets,id',
             'place_id'       => 'required|exists:places,id',
             'status_id'       => 'required|exists:statuses,id',
             'isEat' => 'required',
@@ -38,7 +38,18 @@ class TicketRequest extends FormRequest
             'title' => 'required|min:2',
             'description'       => 'required|min:2',
             'availableVisitors'       => 'required',
-            'time'       => 'required',
+            'startTime' => 'required',
+            'endTime'       => 'required',
+            //some bad things
+            'startInterval' => 'nullable',
+            'endInterval'       => 'nullable',
+            'isMonday' => 'nullable',
+            'isTuesday'       => 'nullable',
+            'isWednesday' => 'nullable',
+            'isThursday'       => 'nullable',
+            'isFriday' => 'nullable',
+            'isSaturday'       => 'nullable',
+            'isSunday'       => 'nullable'
 
             // 'user_id'    => '',
             // 'organization_id' => '',

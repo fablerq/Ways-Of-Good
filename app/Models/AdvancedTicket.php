@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,7 +14,7 @@ class AdvancedTicket extends Model
     protected $fillable = [
         'startInterval', 'endInterval', 'isMonday', 'isTuesday',
         'isWednesday', 'isThursday', 'isFriday', 'isSaturday',
-        'isSunday', 'startTime', 'endTime'
+        'isSunday'
     ];
 
     public $timestamps = false;

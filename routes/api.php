@@ -41,7 +41,11 @@ Route::resource('icons', 'IconController', [
 
   Route::resource('places', 'PlaceController', [
     'except' => ['edit'],
-  ]);  
+  ]);
+
+  Route::post('userplaces/{userId}', 'PlaceController@showForUser');
+  Route::post('usertickets/{userId}', 'TicketController@showForUser');
+  Route::post('orgTickets/{orgId}', 'TicketController@showForOrg');
 
   Route::resource('statuses', 'StatusController', [
     'except' => ['edit'],
@@ -60,3 +64,6 @@ Route::resource('icons', 'IconController', [
   ]);  
 
   Route::post('tickets/{ticketId}/{tagId}', 'TicketController@addTag');
+
+  Route::post('startTicket/{ticketId}', 'TicketController@startTicket');
+  Route::post('stopTicket/{ticketId}', 'TicketController@stopTicket');
